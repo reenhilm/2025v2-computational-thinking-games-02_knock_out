@@ -1,0 +1,19 @@
+Specificering
+	Decomposition
+	Pattern recognition / Generalisation
+	Abstraction
+
+Algoritmdesign
+	Algorithms
+
+Logical Reasoning
+Evaluation
+
+
+
+
+score per omgång
+target score
+kastHistorik
+kastaTärningsfunktion/randomfunktion, upprepas 2ggr per omgång
+fortsätta tills vi nått targetscore (loop/upprepning)
