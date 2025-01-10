@@ -1,6 +1,6 @@
 import createPrompt from 'prompt-sync';
 
-//Knockout Dice Game
+//Main game function
 function playKnockout(knockoutNumber, targetScore) {
     if (![6, 7, 8, 9].includes(knockoutNumber)) {
         throw new Error("Knockout number has to be either 6, 7, 8 or 9.");
@@ -21,9 +21,12 @@ function playKnockout(knockoutNumber, targetScore) {
 
         //Update points
         if (sum === knockoutNumber) {
-            currentScore -= sum; //Minus points for knockout
-        } else {
-            currentScore += sum; //Add points
+            //Minus points for knockout
+            currentScore -= sum;
+        }
+        else {
+            //Add points if avoided knockout
+            currentScore += sum;
         }
     }
 
@@ -38,6 +41,7 @@ const isNumberInputValid = (input) => {
     return !isNaN(input) && isFinite(Number(input));
 }
 
+//High-order function to validate
 const isNumberInputValidRange = (min, max) => {
     return (input) => {   
         if (!isNumberInputValid(input))
@@ -79,8 +83,10 @@ function promptNumber(prompt, promptText, validator, transformer) {
     return transformer ? transformer(input) : input;
 }
 
+//Start the game
 const result = playKnockout(knockoutNumber, targetScore);
 
+//Log result of game
 console.log(`${result.totalThrows} throws to reach goal.`);
 console.log("Throw history:", result.historik);
 console.log(`End points: ${result.endPoints}`);
